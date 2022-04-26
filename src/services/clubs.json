@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "name": "Club Comunicaciones",
+    "city": "Buenos Aires",
+    "telephone": "123123123",
+    "address": "",
+    "pitches": [
+      {
+        "sports": ["football"],
+        "teamSize": 10,
+        "ceiling": false
+      },
+      {
+        "sports": ["football"],
+        "teamSize": 20,
+        "ceiling": false
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "El Predio",
+    "city": "Buenos Aires",
+    "telephone": "123123123",
+    "address": "",
+    "pitches": [
+      {
+        "sports": ["football"],
+        "teamSize": 5,
+        "ceiling": false
+      },
+      {
+        "sports": ["football"],
+        "teamSize": 8,
+        "ceiling": false
+      }
+    ]
+  }
+]
