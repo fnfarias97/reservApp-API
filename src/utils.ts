@@ -1,5 +1,5 @@
 import { NewClub, Pitch } from './types'
-// import { Sports } from './enums'
+import { Sports } from './enums'
 
 const parseName = (nameFromRequest: any): string => {
   if (!isString(nameFromRequest)) {
@@ -34,7 +34,7 @@ const parsePitches = (pitchesFromRequest: any): [Pitch] => {
   if (!isArray(pitchesFromRequest) || pitchesFromRequest.length === 0) {
     throw new Error('Pitches should be sent inside of an array')
   }
-  for (const pitch in pitchesFromRequest) {
+  for (const pitch of pitchesFromRequest) {
     if (!isPitch(pitch)) {
       throw new Error('Incorrect or missing pitches')
     }
@@ -43,37 +43,35 @@ const parsePitches = (pitchesFromRequest: any): [Pitch] => {
 }
 
 const isString = (string: any): boolean => { return typeof string === 'string' }
-// const isNumber = (num: any): boolean => { return typeof num === 'number' }
+const isNumber = (num: any): boolean => { return typeof num === 'number' }
 const isArray = (array: any): boolean => { return Array.isArray(array) }
+const isSport = (sport: any): boolean => { return Object.values(Sports).includes(sport) }
 
-// FIXME: doesn't recognize pitch object properties
 const isPitch = (pitch: any): boolean => {
-  /* if (!isNumber(pitch.teamSize)) {
+  if (!isNumber(pitch.teamSize)) {
     throw new Error('Pitch has no team size info')
   }
+
   if (!isArray(pitch.sports)) {
     throw new Error('Pitch has no related sports Array')
   }
   for (const sport of pitch.sports) {
-    if (!Object.values(Sports).includes(sport)) {
+    if (!isSport(sport)) {
       throw new Error('Pitch has invalid sports')
     }
   }
 
   if (!isString(pitch.ceiling)) {
     throw new Error('Pitch has no ceiling info')
-  } */
-  if (!instanceOfPitch(pitch)) {
-    return false
   }
   return true
 }
 
-function instanceOfPitch (data: any): data is Pitch {
+/* function instanceOfPitch (data: any): data is Pitch {
   return 'sports' in data
 }
 
-/* const isDate = (date: string): boolean => {
+const isDate = (date: string): boolean => {
   return Boolean(Date.parse(date))
 } */
 
